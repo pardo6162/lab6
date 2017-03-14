@@ -34,10 +34,10 @@ public class JDBCExample {
     
     public static void main(String args[]){
         try {
-            String url="jdbc:mysql://HOST:3306/BD";
-            String driver="com.mysql.jdbc.Driver";
-            String user="USER";
-            String pwd="PWD";
+           String url="jdbc:mysql://desarrollo.is.escuelaing.edu.co:3306/bdprueba";
+           String driver="com.mysql.jdbc.Driver";
+           String user="bdprueba";
+           String pwd="bdprueba";
                         
             Class.forName(driver);
             Connection con=DriverManager.getConnection(url,user,pwd);
@@ -57,11 +57,11 @@ public class JDBCExample {
             System.out.println("-----------------------");
             
             
-            int suCodigoECI=20134423;
-            registrarNuevoProducto(con, suCodigoECI, "SU NOMBRE", 99999999);            
+            int suCodigoECI=2115237;
+            registrarNuevoProducto(con, suCodigoECI, "MANTILLAPARDO", 10);            
             con.commit();
             
-            cambiarNombreProducto(con, suCodigoECI, "EL NUEVO NOMBRE");
+            cambiarNombreProducto(con, suCodigoECI, "PARDOMATILLA");
             con.commit();
             
             
@@ -86,7 +86,11 @@ public class JDBCExample {
         //Crear preparedStatement
         //Asignar parámetros
         //usar 'execute'
-
+        String registrarProducto="insert into ORD_PRODUCTOS values ("+codigo+","+nombre+","+precio+");";
+   
+        try{
+            
+        }catch(Exception e){}
         
         con.commit();
         
