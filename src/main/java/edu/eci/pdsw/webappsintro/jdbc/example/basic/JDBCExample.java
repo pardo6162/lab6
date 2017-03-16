@@ -89,7 +89,8 @@ public class JDBCExample {
         String registrarProducto="insert into ORD_PRODUCTOS values ("+codigo+","+nombre+","+precio+");";
    
         try{
-            
+            con.setAutoCommit(false);
+            con.prepareStatement(registrarProducto);
         }catch(Exception e){}
         
         con.commit();
@@ -99,7 +100,26 @@ public class JDBCExample {
     /**
      * Consultar los nombres de los productos asociados a un pedido
      * @param con la conexión JDBC
-     * @param codigoPedido el código del pedido
+     * @param codigoPedido elEn un motor de base de datos MySQL Se tiene un esquema con el siguiente modelo de base de datos (un registro de pedidos de productos):
+
+    Clone el proyecto disponible en https://github.com/PDSW-ECI/JDBC_Intro.git.
+
+    Ajuste los parámetros de conexión del programa:
+
+String url="jdbc:mysql://desarrollo.is.escuelaing.edu.co:3306/bdprueba";
+String driver="com.mysql.jdbc.Driver";
+String user="bdprueba";
+String pwd="bdprueba";
+
+    Revise la documentación de ‘PreparedStatement’, del API JDBC: http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html. Teniendo en cuenta esto, implemente las operaciones faltantes (la operación que hace el cálculo del valor de un pedido debe hacerlo mediante SQL). Para las operaciones c y d use su código de estudiante, de manera que no haya conflicto con sus compañeros (todos están usando la misma base de datos).
+        nombresProductosPedido
+        valorTotalPedido
+        cambiarNombreProducto
+        registrarNuevoProducto
+
+    Ejecute las operaciones y rectifique los resultados. Operaciones a y b por pantalla, operaciones c y d consultando en la base de datos con un cliente MySQL.
+
+ código del pedido
      * @return 
      */
     public static List<String> nombresProductosPedido(Connection con, int codigoPedido){
